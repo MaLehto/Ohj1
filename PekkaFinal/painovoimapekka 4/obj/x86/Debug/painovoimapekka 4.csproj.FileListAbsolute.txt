@@ -1,0 +1,82 @@
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\painovoimapekka 4.exe
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\painovoimapekka 4.pdb
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\Jypeli.dll
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\Jypeli.Physics2d.dll
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\MonoGame.Framework.dll
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\SharpDX.MediaFoundation.dll
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\SharpDX.dll
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\SharpDX.XAudio2.dll
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\SharpDX.DXGI.dll
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\SharpDX.Direct3D11.dll
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\SharpDX.Direct2D1.dll
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\SharpDX.XInput.dll
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\Jypeli.xml
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\Jypeli.Physics2d.xml
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\MonoGame.Framework.xml
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\SharpDX.MediaFoundation.xml
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\SharpDX.xml
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\SharpDX.XAudio2.xml
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\SharpDX.DXGI.xml
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\SharpDX.Direct3D11.xml
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\SharpDX.Direct2D1.xml
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\SharpDX.XInput.xml
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\obj\x86\Debug\painovoimapekka 4.csprojAssemblyReference.cache
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\obj\x86\Debug\painovoimapekka 4.csproj.CopyComplete
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\obj\x86\Debug\painovoimapekka 4.exe
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\obj\x86\Debug\painovoimapekka 4.pdb
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\Content\PekkaAlku.xnb
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\Content\Pekkahävisit.xnb
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\Content\juoksu1.xnb
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\Content\juoksu2.xnb
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\Content\juoksu3.xnb
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\Content\juoksu4.xnb
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\Content\juoksu5.xnb
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\Content\juoksu6.xnb
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\Content\juoksu7.xnb
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\Content\juoksu8.xnb
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\Content\luola.xnb
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\Content\PekkaEste.xnb
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\Content\PekkaEste2.xnb
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\Content\pekkaeste3.xnb
+C:\Users\Matti\source\repos\painovoimapekka 4\painovoimapekka 4\bin\Windows\Debug\Content\pekkaeste4.xnb
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\Content\juoksu1.xnb
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\Content\juoksu2.xnb
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\Content\juoksu3.xnb
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\Content\juoksu4.xnb
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\Content\juoksu5.xnb
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\Content\juoksu6.xnb
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\Content\juoksu7.xnb
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\Content\juoksu8.xnb
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\Content\luola.xnb
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\Content\PekkaAlku.xnb
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\Content\PekkaEste.xnb
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\Content\PekkaEste2.xnb
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\Content\pekkaeste3.xnb
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\Content\pekkaeste4.xnb
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\Content\Pekkahävisit.xnb
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\painovoimapekka 4.exe
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\painovoimapekka 4.pdb
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\Jypeli.dll
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\Jypeli.Physics2d.dll
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\MonoGame.Framework.dll
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\SharpDX.MediaFoundation.dll
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\SharpDX.dll
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\SharpDX.XAudio2.dll
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\SharpDX.DXGI.dll
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\SharpDX.Direct3D11.dll
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\SharpDX.Direct2D1.dll
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\SharpDX.XInput.dll
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\Jypeli.xml
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\Jypeli.Physics2d.xml
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\MonoGame.Framework.xml
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\SharpDX.MediaFoundation.xml
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\SharpDX.xml
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\SharpDX.XAudio2.xml
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\SharpDX.DXGI.xml
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\SharpDX.Direct3D11.xml
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\SharpDX.Direct2D1.xml
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\bin\Windows\Debug\SharpDX.XInput.xml
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\obj\x86\Debug\painovoimapekka 4.csprojAssemblyReference.cache
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\obj\x86\Debug\painovoimapekka 4.csproj.CopyComplete
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\obj\x86\Debug\painovoimapekka 4.exe
+E:\kurssit\ohj1\mmlehtxy\PekkaFinal\painovoimapekka 4\obj\x86\Debug\painovoimapekka 4.pdb

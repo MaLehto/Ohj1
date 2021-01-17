@@ -1,0 +1,515 @@
+<<<<<<< .mine
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Jypeli;
+using Jypeli.Assets;
+using Jypeli.Controls;
+using Jypeli.Effects;
+using Jypeli.Widgets;
+
+public class painovoimapekka_4 : PhysicsGame
+{
+
+    private List<GameObject> Liikutettavat = new List<GameObject>();
+    private IntMeter pisteet;
+    private EasyHighScore topTen = new EasyHighScore();
+    private Image alkukuva = LoadImage("PekkaAlku");
+    private Image kuolemakuva = LoadImage("Pekkahävisit");
+    private Image[] juoksu = LoadImages("juoksu1", "juoksu2", "juoksu3", "juoksu4", "juoksu5", "juoksu6", "juoksu7", "juoksu8");
+
+    public override void Begin()
+    {
+        Camera.FollowOffset = new Vector(Screen.Width / 2.5 - 1920, 0.0);
+        //Camera.ZoomToLevel();
+        Level.CreateBorders();
+
+        LuoKentta(this, 0, 0);
+        Alkuvalikko();
+        IsPaused = true;
+
+        topTen.HighScoreWindow.NameInputWindow.Message.Text = "Onneksi olkoon menestyksesi johdosta. Sait {0:0} pistettä.";
+        Level.Background.Image = LoadImage("luola");
+ 
+    }
+
+
+    /// <summary>
+    /// Piirretään hahmo kentälle
+    /// </summary>
+    /// <param name="painovoimapekka">peli johon hahmo piirretään</param>
+    /// <param name="a">x-koordinaatti piirtämiseen</param>
+    /// <param name="b">y-koordinaatti piirtämiseen</param>
+    /// <param name="tunniste">pelaajalle asetettava tunniste</param>
+    /// <returns>Hahmo kentälle</returns>
+    private PhysicsObject PiirraHahmo(Game painovoimapekka, int a, int b, string tunniste)
+    {
+        PhysicsObject pelaaja = new PhysicsObject(100, 100, Shape.Rectangle);
+        pelaaja.Position = new Vector(a, b);
+        pelaaja.Color = Color.Black;
+        AddCollisionHandler(pelaaja, "este", PekkaMenehtyy);
+        AddCollisionHandler(pelaaja, "kerattava", Esteenohitus);
+        pelaaja.Tag = tunniste;
+        pelaaja.Restitution = 0.0;
+        Vector painovoima = new Vector(0, -200);
+        pelaaja.Hit(painovoima);
+        painovoimapekka.Add(pelaaja);
+        return pelaaja;
+    }
+
+
+    /// <summary>
+    /// Luodaan kenttä peliin
+    /// </summary>
+    /// <param name="peli">peli johon luodaan</param>
+    /// <param name="x">x-koordinaatti</param>
+    /// <param name="y">y-koordinaatti</param>
+    private void LuoKentta(PhysicsGame peli, double x, double y)
+    {
+        LuoMaa(0, 400);
+        LuoMaa(0, -400);
+        LuoKokoEste();
+    }
+
+
+    /// <summary>
+    /// Luodaan osa koko maata
+    /// </summary>
+    /// <param name="x">x-koordinaatti</param>
+    /// <param name="y">y-koordinaatti</param>
+    private void LuoMaa(double x, double y)
+    {
+        PhysicsObject maa = PhysicsObject.CreateStaticObject(2000, 100, Shape.Rectangle);
+        maa.X = x;
+        maa.Y = y;
+        maa.Color = Color.Gray;
+        Add(maa);
+    }
+
+
+    /// <summary>
+    /// Esteem luominen
+    /// </summary>
+    /// <param name="x">x-koordinaatti</param>
+    /// <param name="y">y-koordinaatti</param>
+    /// <param name="tunniste">esteen tunniste</param>
+    private void LuoEste(double x, double y, string tunniste)
+    {
+        double leveys = 150;
+        double korkeus = RandomGen.NextDouble(200, 500);
+        PhysicsObject este = new PhysicsObject(leveys, korkeus, Shape.Rectangle);
+        este.X = x;
+        este.Y = y;
+        este.Tag = tunniste;
+        este.Restitution = 0.0;
+        este.IgnoresGravity = true;
+        Add(este);
+        Liikutettavat.Add(este);
+    }
+
+
+    /// <summary>
+    /// Kerättävän esineen luonti, jonka avulla tehdään pisteytys
+    /// </summary>
+    /// <param name="x">x-koordinaatti</param>
+    /// <param name="y">y-koordinaatti</param>
+    /// <param name="tunniste">tunniste kerättävälle</param>
+    private void LuoKerattava(double x, double y, string tunniste)
+    {
+        PhysicsObject kerattava = new PhysicsObject(10, 1000, Shape.Rectangle);
+        kerattava.X = x;
+        kerattava.Y = y;
+        kerattava.Tag = tunniste;
+        kerattava.Color = Color.Black;
+        kerattava.IgnoresCollisionResponse = true;
+        kerattava.IgnoresGravity = true;
+        kerattava.IsVisible = false;
+        Add(kerattava);
+        Liikutettavat.Add(kerattava);
+    }
+
+
+    /// <summary>
+    /// Luodaan kokonainen este, jota kutsutaan kentän luonnissa. Koostuu kerattavistä ja esteista
+    /// </summary>
+    private void LuoKokoEste()
+    {
+        LuoKerattava(750, 0, "kerattava");
+        LuoEste(750, -350, "este");
+        LuoEste(750, 350, "este");
+    }
+
+
+    /// <summary>
+    /// Pelin häviämisen räjähdys ja pisteiden näyttäminen
+    /// </summary>
+    /// <param name="pekka">pelihahmo</param>
+    private void PekkaRajahtaa(PhysicsObject pekka)
+    {
+        Explosion rajahdys = new Explosion(pekka.Width * 10);
+        rajahdys.Position = pekka.Position;
+        rajahdys.UseShockWave = true;
+        Add(rajahdys);
+        Remove(pekka);
+        IsPaused = true;
+        topTen.EnterAndShow(pisteet.Value);
+        topTen.HighScoreWindow.Closed += AloitaAlusta;
+    }
+
+
+    /// <summary>
+    /// Hahmon kuoleminen
+    /// </summary>
+    /// <param name="pekka">hahmo</param>
+    /// <param name="este">este johon törmätty</param>
+    private void PekkaMenehtyy(PhysicsObject pekka, PhysicsObject este)
+    {
+        PekkaRajahtaa(pekka);
+    }
+
+
+    /// <summary>
+    /// painovoima joka vaikuttaa hahmoon
+    /// </summary>
+    /// <param name="pekka">hahmo</param>
+    /// <param name="painovoima">vaikuttava voima</param>
+    public static void Painovoima(PhysicsObject pekka, Vector painovoima)
+    {
+        pekka.Velocity = painovoima;
+    }
+
+
+    /// <summary>
+    /// Liikutetaan estettä kohti näytön vasempaa reunaa
+    /// </summary>
+    private void LiikutaOlioita()
+    {
+        double tuhoamisX = Level.Left - 100;
+        for (int i = 0; i < Liikutettavat.Count; i++)
+        {
+            GameObject olio = Liikutettavat[i];
+            olio.X += -5 - (pisteet * 0.5);
+            if (olio.X <= tuhoamisX)
+            {
+                olio.Destroy();
+                Liikutettavat.Remove(olio);
+            }
+        }
+    }
+
+
+    /// <summary>
+    /// Laskuri joka laskee saadut pisteet
+    /// </summary>
+    /// <param name="x">x-koordinaatti laskurille</param>
+    /// <param name="y">y-koodrinaatti laskurille</param>
+    /// <returns>pistelaskuri näytölle</returns>
+    private IntMeter LuoPistelaskuri (double x, double y)
+    {
+        IntMeter laskuri = new IntMeter(0);
+
+        Label pisteet = new Label();
+        pisteet.BindTo(laskuri);
+        pisteet.X = x;
+        pisteet.Y = y;
+        pisteet.TextColor = Color.Black;
+        pisteet.Color = Color.White;
+        pisteet.IntFormatString = "Esteitä ohitettu: {0:D1}";
+        Add(pisteet);
+
+        return laskuri;
+    }
+
+
+    /// <summary>
+    /// Lisää pistelistaan yhden
+    /// </summary>
+    /// <param name="pekka">hahmo</param>
+    /// <param name="kerattava">kerättävä asia</param>
+    public void Esteenohitus(PhysicsObject pekka, PhysicsObject kerattava)
+    {
+        pisteet.Value += 1;
+    }
+
+
+    /// <summary>
+    /// Laskuri lisätään näyttöön
+    /// </summary>
+    public void Lisaalaskuri()
+    {
+        pisteet = LuoPistelaskuri(Screen.Left + 200.0, Screen.Top - 100.0);
+    }
+
+
+    /// <summary>
+    /// Pelin alkuvalikko, josta aloittaa tai poistuu
+    /// </summary>
+    public void Alkuvalikko()
+    {
+        MultiSelectWindow alkuValikko = new MultiSelectWindow("Alkuvalikko", "Aloita", "Parhaat pisteet", "Lopeta");
+        Add(alkuValikko);
+        alkuValikko.AddItemHandler(0, AloitaPeli);
+        alkuValikko.AddItemHandler(1, NaytaLista);
+        alkuValikko.AddItemHandler(2, Exit);
+        LisaaKuva(alkukuva, -50, -40);
+
+    }
+
+
+    /// <summary>
+    /// "aloittaa" peli ottamalla sen pois pauselta
+    /// </summary>
+    public void AloitaPeli()
+    {
+        IsPaused = false;
+        ClearAll();
+        LuoKentta(this, 0, 0);
+        Lisaalaskuri();
+        Liikutusajastin();
+        Luomisajastin();
+        Level.Background.Image = LoadImage("luola");
+        PhysicsObject pekka = PiirraHahmo(this, 0, 0, "hahmo");
+        pekka.Animation = new Animation(juoksu);
+        pekka.Animation.Start();
+        AsetaKontrollit(pekka);
+    }
+
+
+    /// <summary>
+    /// Näyttää parhaiden pisteiden listan
+    /// </summary>
+    public void NaytaLista()
+    {
+        topTen.Show();
+    }
+ 
+
+    /// <summary>
+    /// pelaajaa kohti tulevien esteiden liikkuminen
+    /// </summary>
+    public void Liikutusajastin()
+    {
+        Timer liikutusAjastin = new Timer();
+        liikutusAjastin.Interval = 0.01;
+        liikutusAjastin.Timeout += LiikutaOlioita;
+        liikutusAjastin.Start();
+    }
+
+
+    /// <summary>
+    /// Esteiden luomiseen käytettävä ajastin ja
+    /// esteiden luonnin nopeuttamiseen käytettävä ajastin
+    /// </summary>
+    public void Luomisajastin()
+    {
+        double aika = 1;
+        Timer luomisajastin = new Timer();
+        luomisajastin.Interval = aika;
+        luomisajastin.Timeout += LuoKokoEste;
+        luomisajastin.Start();
+
+        Timer luomisenNopeutin = new Timer();
+        luomisenNopeutin.Interval = 1 + pisteet.Value;
+        luomisenNopeutin.Timeout += delegate
+        {
+            if (luomisajastin.Interval - 0.1 <= 0) return;
+            luomisajastin.Interval -= 0.05;
+        };
+        luomisenNopeutin.Start();
+
+    }
+
+
+    /// <summary>
+    /// pelin kontrollit
+    /// </summary>
+    /// <param name="pekka">hahmo</param>
+    public void AsetaKontrollit(PhysicsObject pekka)
+    {
+        Keyboard.Listen(Key.F1, ButtonState.Pressed, ShowControlHelp, "näytä kontrollit");
+        Keyboard.Listen(Key.Escape, ButtonState.Pressed, ConfirmExit, "Lopeta peli");
+        Keyboard.Listen(Key.Space, ButtonState.Pressed, Painovoima, "Vaihda painovoima ylös", pekka, new Vector(0, 400));
+        Keyboard.Listen(Key.Space, ButtonState.Released, Painovoima, "Vaihda painovoima alas", pekka, new Vector(0, -400));
+
+    }
+
+
+    /// <summary>
+    /// kuoleman jälkeinen uudelleenaloitus
+    /// </summary>
+    /// <param name="sender"></param>
+    public void AloitaAlusta(Window sender)
+    {  
+        ClearAll();
+        LisaaKuva(kuolemakuva, 50, -20);
+        LuoKentta(this, 0, 0);
+        Lisaalaskuri();
+        Liikutusajastin();
+        Luomisajastin();
+        Level.Background.Image = LoadImage("luola");
+        PhysicsObject pekka = PiirraHahmo(this, 0, 0, "hahmo");
+        AsetaKontrollit(pekka);
+        UusintaValikko();
+    }
+
+
+    /// <summary>
+    /// Valikko joka ilmestyy pelaajan kuollessa
+    /// </summary>
+    public void UusintaValikko()
+    {
+        MultiSelectWindow uusintaValikko = new MultiSelectWindow("Pekka menehtyi", "Yritä uudelleen", "Lopeta");
+        Add(uusintaValikko);
+        uusintaValikko.AddItemHandler(0, AloitaPeli);
+        uusintaValikko.AddItemHandler(1, Exit);
+    }
+
+
+    /// <summary>
+    /// Lisätään kuva haluttuun kohtaan peli
+    /// </summary>
+    /// <param name="kuva">lisättävä kuva</param>
+    /// <param name="x">x-koordinaatti</param>
+    /// <param name="y">y-koordinaatti</param>
+    private void LisaaKuva(Image kuva, int x, int y)
+    {
+        GameObject k = new GameObject(kuva);
+        k.Position = new Vector(x, y);
+        Add(k);
+    }
+
+}
+||||||| .r0
+=======
+﻿using System;
+using System.Collections.Generic;
+using Jypeli;
+using Jypeli.Assets;
+using Jypeli.Controls;
+using Jypeli.Widgets;
+
+public class painovoimapekka_4 : PhysicsGame
+{
+
+    private List<GameObject> Liikutettavat = new List<GameObject>();
+    private double suunta = -10;
+    private double tuhoamisX;
+
+    public override void Begin()
+    {
+        Camera.FollowOffset = new Vector(Screen.Width / 2.5 - 1920, 0.0);
+        //Camera.ZoomToLevel();
+        Level.CreateBorders(); 
+
+        PhysicsObject pekka = PiirraHahmo(this, 0, -200, "hahmo");
+        pekka.Image = LoadImage("Mao");
+
+        //MediaPlayer.Play("Maomusiikki");
+
+        LuoKentta(this, 0, 0);
+
+        Keyboard.Listen(Key.F1, ButtonState.Pressed, ShowControlHelp, "näytä kontrollit");
+        Keyboard.Listen(Key.Escape, ButtonState.Pressed, ConfirmExit, "Lopeta peli");
+        Keyboard.Listen(Key.Space, ButtonState.Pressed, Painovoima, "Vaihda painovoima ylös", pekka, new Vector(0, 400));
+        Keyboard.Listen(Key.Space, ButtonState.Released, Painovoima, "Vaihda painovoima alas", pekka, new Vector(0, -400));
+
+        tuhoamisX = Level.Left - 100;
+        Timer liikutusAjastin = new Timer();
+        liikutusAjastin.Interval = 0.05;
+        liikutusAjastin.Timeout += LiikutaOlioita;
+        liikutusAjastin.Start();
+
+        Timer luomisajastin = new Timer();
+        luomisajastin.Interval = 3;
+        luomisajastin.Timeout += LuoKokoEste;
+        luomisajastin.Start();
+    }
+
+
+    private PhysicsObject PiirraHahmo(Game painovoimapekka, int a, int b, string tunniste)
+    {
+        PhysicsObject pelaaja = new PhysicsObject(75, 75, Shape.Rectangle);
+        pelaaja.Position = new Vector(a, b);
+        pelaaja.Color = Color.Black;
+        AddCollisionHandler(pelaaja, "este", PekkaMenehtyy);
+        pelaaja.Tag = tunniste;
+        pelaaja.Restitution = 0.0;
+        Vector painovoima = new Vector(0, 0);
+        pelaaja.Hit(painovoima);
+        painovoimapekka.Add(pelaaja);
+        return pelaaja;
+    }
+
+
+    void LuoKentta(PhysicsGame peli, double x, double y)
+    {
+        LuoKokoEste();
+
+        LuoMaa(0, 400);
+        LuoMaa(0, -400);
+    }
+
+    private void LuoMaa(double x, double y)
+    {
+        PhysicsObject maa = PhysicsObject.CreateStaticObject(1000, 100, Shape.Rectangle);
+        maa.X = x;
+        maa.Y = y;
+        maa.Color = Color.Red;
+        Add(maa);
+    }
+
+    private void LuoEste(double x, double y, string tunniste)
+    {
+        double leveys = 150;
+        double korkeus = RandomGen.NextDouble(200, 500);
+        PhysicsObject este = new PhysicsObject(leveys, korkeus, Shape.Rectangle);
+        este.X = x;
+        este.Y = y;
+        este.Tag = tunniste;
+        este.Restitution = 0.0;
+        este.IgnoresGravity = true;
+        Add(este);
+        Liikutettavat.Add(este);
+    }
+
+    private void LuoKokoEste()
+    {
+        LuoEste(500, -350, "este");
+        LuoEste(500, 350, "este");
+    }
+
+    private void PekkaRajahtaa(IPhysicsObject pekka)
+    {
+        Explosion rajahdys = new Explosion(pekka.Width * 10);
+        rajahdys.Position = pekka.Position;
+        rajahdys.UseShockWave = true;
+        Add(rajahdys);
+        Remove(pekka);
+    }
+
+    private void PekkaMenehtyy(PhysicsObject pekka, PhysicsObject este)
+    {
+        PekkaRajahtaa(pekka);
+    }
+
+    public static void Painovoima(PhysicsObject pekka, Vector painovoima)
+    {
+        pekka.Velocity = painovoima;
+    }
+
+    private void LiikutaOlioita()
+    {
+        for (int i = 0; i < Liikutettavat.Count; i++)
+        {
+            GameObject olio = Liikutettavat[i];
+            olio.X += suunta;
+            if (olio.X <= tuhoamisX)
+            {
+                olio.Destroy();
+                Liikutettavat.Remove(olio);
+            }
+        }
+    }
+}
+>>>>>>> .r41047

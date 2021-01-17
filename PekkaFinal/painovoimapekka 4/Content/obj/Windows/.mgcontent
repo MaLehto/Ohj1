@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>E:/kurssit/ohj1/mmlehtxy/PekkaFinal/painovoimapekka 4/Content/juoksu1.png</File>
+    <File>E:/kurssit/ohj1/mmlehtxy/PekkaFinal/painovoimapekka 4/Content/juoksu2.png</File>
+    <File>E:/kurssit/ohj1/mmlehtxy/PekkaFinal/painovoimapekka 4/Content/juoksu3.png</File>
+    <File>E:/kurssit/ohj1/mmlehtxy/PekkaFinal/painovoimapekka 4/Content/juoksu4.png</File>
+    <File>E:/kurssit/ohj1/mmlehtxy/PekkaFinal/painovoimapekka 4/Content/juoksu5.png</File>
+    <File>E:/kurssit/ohj1/mmlehtxy/PekkaFinal/painovoimapekka 4/Content/juoksu6.png</File>
+    <File>E:/kurssit/ohj1/mmlehtxy/PekkaFinal/painovoimapekka 4/Content/juoksu7.png</File>
+    <File>E:/kurssit/ohj1/mmlehtxy/PekkaFinal/painovoimapekka 4/Content/juoksu8.png</File>
+    <File>E:/kurssit/ohj1/mmlehtxy/PekkaFinal/painovoimapekka 4/Content/luola.png</File>
+    <File>E:/kurssit/ohj1/mmlehtxy/PekkaFinal/painovoimapekka 4/Content/PekkaAlku.png</File>
+    <File>E:/kurssit/ohj1/mmlehtxy/PekkaFinal/painovoimapekka 4/Content/PekkaEste.png</File>
+    <File>E:/kurssit/ohj1/mmlehtxy/PekkaFinal/painovoimapekka 4/Content/PekkaEste2.png</File>
+    <File>E:/kurssit/ohj1/mmlehtxy/PekkaFinal/painovoimapekka 4/Content/pekkaeste3.png</File>
+    <File>E:/kurssit/ohj1/mmlehtxy/PekkaFinal/painovoimapekka 4/Content/pekkaeste4.png</File>
+    <File>E:/kurssit/ohj1/mmlehtxy/PekkaFinal/painovoimapekka 4/Content/Pekkahävisit.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>
